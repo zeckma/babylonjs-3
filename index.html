@@ -54,16 +54,16 @@
         var scene = null;
         var sceneToRender = null;
         var createDefaultEngine = function() { return new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false}); };
+     
         var delayCreateScene = function () {
             
             var scene = new BABYLON.Scene(engine);  
-        
-            BABYLON.SceneLoader.ImportMesh("", "scenes/", "StanfordBunny.obj", scene, function (meshes) {          
+       
+            BABYLON.SceneLoader.ImportMesh("", "scenes/", "petalt9.glb", scene, function (meshes) {          
                 scene.createDefaultCameraOrLight(true, true, true);
                 scene.createDefaultEnvironment();
-                
+                var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 10000, height: 100000}, scene);                
             });
-        
             return scene;
         };
                 window.initFunction = async function() {
